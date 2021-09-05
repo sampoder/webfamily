@@ -46,32 +46,33 @@ export default function App({ users, user, errorCode }) {
           >
             {users.map(user => (
               <NextLink href={`https://${user.username}.nlcs.sampoder.com`}>
-              <Flex
-                sx={{
-                  bg: 'brown',
-                  py: 2,
-                  px: '10px',
-                  borderRadius: 8,
-                  color: 'white',
-                  fontWeight: 600,
-                  alignItems: 'center',
-                  cursor: 'pointer',
-                  '&:hover': {
-                    bg: 'blue',
-                  },
-                }}
-              >
-                <Image
-                  src={user.avatar[0].url}
+                <Flex
                   sx={{
+                    bg: 'brown',
+                    py: 2,
+                    px: '10px',
                     borderRadius: 8,
-                    height: '24px',
-                    mr: 2,
-                    border: '1.5px solid white',
+                    color: 'white',
+                    fontWeight: 600,
+                    alignItems: 'center',
+                    cursor: 'pointer',
+                    '&:hover': {
+                      bg: 'blue',
+                    },
                   }}
-                />{' '}
-                {user.username}
-              </Flex></NextLink>
+                >
+                  <Image
+                    src={user.avatar[0].url}
+                    sx={{
+                      borderRadius: 8,
+                      height: '24px',
+                      mr: 2,
+                      border: '1.5px solid white',
+                    }}
+                  />{' '}
+                  {user.username}
+                </Flex>
+              </NextLink>
             ))}
           </Grid>
           <Box sx={{ mt: 3 }}>
@@ -97,17 +98,15 @@ export async function getServerSideProps(ctx) {
     const users = await getUsers()
     return { props: { users } }
   } else {
-    try{
+    try {
       const user = await getUser(wildcard)
-      if(user.htmlContents){
+      if (user.htmlContents) {
         return { props: { user } }
+      } else {
+        return { props: { errorCode: 404 } }
       }
-      else{
-        return { errorCode: 404 }
-      }
-    }
-    catch{
-      return { errorCode: 404 }
+    } catch {
+      return { props: { errorCode: 404 } }
     }
   }
 }
