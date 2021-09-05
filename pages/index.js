@@ -11,6 +11,7 @@ import {
 import { getUsers } from './api/list'
 import { getUser } from './api/[slug]'
 import theme from '../lib/theme'
+import NextLink from 'next/link'
 
 export default function App({ users, user }) {
   if (user) {
@@ -40,6 +41,7 @@ export default function App({ users, user }) {
             mt={3}
           >
             {users.map(user => (
+              <NextLink href={`https://${user.username}.nlcs.sampoder.com`}>
               <Flex
                 sx={{
                   bg: 'brown',
@@ -65,7 +67,7 @@ export default function App({ users, user }) {
                   }}
                 />{' '}
                 {user.username}
-              </Flex>
+              </Flex></NextLink>
             ))}
           </Grid>
           <Box sx={{ mt: 3 }}>
