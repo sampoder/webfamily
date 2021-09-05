@@ -99,7 +99,12 @@ export async function getServerSideProps(ctx) {
   } else {
     try{
       const user = await getUser(wildcard)
-      return { props: { user } }
+      if(user.htmlContents){
+        return { props: { user } }
+      }
+      else{
+        return { errorCode: 404 }
+      }
     }
     catch{
       return { errorCode: 404 }
