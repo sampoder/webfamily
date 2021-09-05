@@ -92,7 +92,7 @@ export async function getServerSideProps(ctx) {
     wildcard != 'nlcs'
       ? wildcard != 'localhost'
         ? wildcard
-        : 'sampoder'
+        : null
       : null
   if (wildcard == null) {
     const users = await getUsers()
