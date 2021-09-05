@@ -12,8 +12,12 @@ import { getUsers } from './api/list'
 import { getUser } from './api/[slug]'
 import theme from '../lib/theme'
 import NextLink from 'next/link'
+import Error from 'next/error'
 
-export default function App({ users, user }) {
+export default function App({ users, user, errorCode }) {
+  if (errorCode) {
+    return <Error statusCode={errorCode} />
+  }
   if (user) {
     return <Box dangerouslySetInnerHTML={{ __html: user.htmlContents }}></Box>
   } else {
@@ -93,7 +97,12 @@ export async function getServerSideProps(ctx) {
     const users = await getUsers()
     return { props: { users } }
   } else {
-    const user = await getUser(wildcard)
-    return { props: { user } }
+    try{
+      const user = await getUser(wildcard)
+      return { props: { user } }
+    }
+    catch{
+      return { errorCode: 404 }
+    }
   }
 }
