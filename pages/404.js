@@ -26,7 +26,7 @@ export default function App({ users, user, errorCode }) {
           <Heading as="h1" sx={{ fontSize: 5, mb: 2 }}>
             404: This Page Wasn't Found
           </Heading>
-          <Heading sx={{ fontWeight: 400 }}>
+          <Heading sx={{ fontWeight: 400, mt: 3 }}>
             <Link href="https://nlcs.sampoder.com/">
               Explore all the pages here.
             </Link>

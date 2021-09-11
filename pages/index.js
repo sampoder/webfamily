@@ -19,7 +19,96 @@ export default function App({ users, user, errorCode }) {
     return <Error statusCode={errorCode} />
   }
   if (user) {
-    return <Box dangerouslySetInnerHTML={{ __html: user.htmlContents }}></Box>
+    let strippedTheme = theme
+    strippedTheme.fonts = { themed: `'EB Garamond'` }
+    strippedTheme.colors.background = null
+    strippedTheme.colors.text = '#000'
+    return (
+      <>
+        <Box dangerouslySetInnerHTML={{ __html: user.htmlContents }} />
+        <ThemeProvider theme={strippedTheme}>
+          <Box
+            sx={{
+              position: 'absolute',
+              bottom: 3,
+              left: 3,
+              fontFamily: 'themed',
+              bg: 'brown',
+              color: 'white',
+              textAlign: 'center',
+              fontWeight: 800,
+              fontSize: 4,
+              width: '40px',
+              height: '40px',
+              borderRadius: 999,
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'center',
+              paddingBottom: '3px',
+            }}
+            onClick={() => {
+              alert([`This is student generated content created during a`,
+              `workshop in school, the workshops created have been brought`,
+              `together to make an explorable collection.`].join(' '))
+            }}
+          >
+            i
+          </Box>
+          <Box
+            sx={{
+              position: 'absolute',
+              bottom: 3,
+              right: 3,
+              fontFamily: 'themed',
+              bg: 'brown',
+              color: 'white',
+              textAlign: 'center',
+              fontWeight: 800,
+              fontSize: 4,
+              width: '100px',
+              height: '40px',
+              borderRadius: 999,
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <Box
+              sx={{
+                '&:hover':{bg: 'blue'},
+                height: '40px',
+                width: '50px',
+                borderTopLeftRadius: 999,
+                borderBottomLeftRadius: 999,
+                paddingBottom: '6px',
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'flex-end',
+                paddingRight: '4px'
+              }}
+            >
+              ←
+            </Box>
+            <Box
+              sx={{
+                '&:hover':{bg: 'blue'},
+                height: '40px',
+                width: '50px',
+                borderTopRightRadius: 999,
+                borderBottomRightRadius: 999,
+                paddingBottom: '6px',
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'flex-start',
+                paddingLeft: '4px'
+              }}
+            >
+              →
+            </Box>
+          </Box>
+        </ThemeProvider>
+      </>
+    )
   } else {
     return (
       <ThemeProvider theme={theme}>
@@ -92,7 +181,7 @@ export async function getServerSideProps(ctx) {
     wildcard != 'nlcs'
       ? wildcard != 'localhost'
         ? wildcard
-        : null
+        : 'sampoder'
       : null
   if (wildcard == null) {
     const users = await getUsers()
