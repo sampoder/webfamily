@@ -4,10 +4,15 @@ import { highlight, languages } from 'prismjs/components/prism-core'
 import 'prismjs/components/prism-clike'
 import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-markup'
+import Error from 'next/error'
+import { getUserFromId } from './../api/[slug]'
 
-export default function EditPage() {
-  const [code, setCode] = useState(`<h1>Hi!</h1>`)
+export default function EditPage({errorCode, user, userID}) {
+  const [code, setCode] = useState( errorCode ? '' : user['HTML Contents'])
   const [savedStatus, setSavedStatus] = useState(true)
+  if (errorCode) {
+    return <Error statusCode={errorCode} />
+  }
   return (
     <>
       <div style={{ gridTemplateColumns: '1fr 1fr', display: 'grid' }}>
@@ -46,7 +51,14 @@ export default function EditPage() {
           fontFamily: "'EB Garamond'",
           cursor: 'pointer',
         }}
-        onClick={() => {
+        onClick={async () => {
+          await fetch(`/api/save/${userID}`, {
+            method: 'POST', // or 'PUT'
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 'HTML Contents': code }),
+          }).then(response => response.json())
           setSavedStatus(true)
         }}
       >
@@ -199,4 +211,19 @@ export default function EditPage() {
     `}</style>
     </>
   )
+}
+
+export async function getServerSideProps(ctx) {
+  let targetUsername = ctx.params.id
+  try {
+    const user = await getUserFromId(targetUsername)
+    console.log(user)
+    if (user['HTML Contents']) {
+      return { props: { user, userID: targetUsername } }
+    } else {
+      return { props: { errorCode: 404 } }
+    }
+  } catch {
+    return { props: { errorCode: 404 } }
+  }
 }

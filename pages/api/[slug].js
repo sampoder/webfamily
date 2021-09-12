@@ -18,6 +18,10 @@ export async function getUser(username) {
   ).map(x => x.fields)[0]
 }
 
+export async function getUserFromId(id) {
+  return (await usersTable.find(id)).fields
+}
+
 export default async function handler(req, res) {
   res.status(200).json(await getUser(req.query.slug))
 }

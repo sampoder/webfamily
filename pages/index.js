@@ -30,7 +30,7 @@ export default function App({ users, user, errorCode }) {
           srcDoc={`${user.htmlContents}`}
           style={{
             border: 'none',
-            height: 'calc(100vh - 8px)',
+            height: '100vh',
             width: '100%',
             overflow: 'hidden',
           }}
