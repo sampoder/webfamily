@@ -13,6 +13,7 @@ import { getUser } from './api/[slug]'
 import theme from '../lib/theme'
 import NextLink from 'next/link'
 import Error from 'next/error'
+import Meta from '../components/meta'
 
 export default function App({ users, user, errorCode }) {
   if (errorCode) {
@@ -24,8 +25,21 @@ export default function App({ users, user, errorCode }) {
     strippedTheme.colors.background = null
     strippedTheme.colors.text = '#000'
     return (
-      <>
-        <Box dangerouslySetInnerHTML={{ __html: user.htmlContents }} />
+      <div>
+        <iframe
+          srcDoc={`${user.htmlContents}`}
+          style={{
+            border: 'none',
+            height: 'calc(100vh - 8px)',
+            width: '100%',
+            overflow: 'hidden',
+          }}
+          frameBorder="0"
+          scrolling="yes" 
+          seamless="seamless"
+          height="100%"
+          width="100%"
+        />
         <ThemeProvider theme={strippedTheme}>
           <Box
             sx={{
@@ -118,11 +132,12 @@ export default function App({ users, user, errorCode }) {
             </Link>
           </Box>
         </ThemeProvider>
-      </>
+      </div>
     )
   } else {
     return (
       <ThemeProvider theme={theme}>
+        <Meta />
         <Container
           as="main"
           py={4}
