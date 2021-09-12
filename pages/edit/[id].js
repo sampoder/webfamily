@@ -218,7 +218,7 @@ export async function getServerSideProps(ctx) {
   try {
     const user = await getUserFromId(targetUsername)
     console.log(user)
-    if (user['HTML Contents']) {
+    if (user['Username']) {
       return { props: { user, userID: targetUsername } }
     } else {
       return { props: { errorCode: 404 } }
