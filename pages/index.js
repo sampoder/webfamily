@@ -45,11 +45,16 @@ export default function App({ users, user, errorCode }) {
               display: 'flex',
               justifyContent: 'center',
               paddingBottom: '3px',
+              cursor: 'pointer',
             }}
             onClick={() => {
-              alert([`This is student generated content created during a`,
-              `workshop in school, the workshops created have been brought`,
-              `together to make an explorable collection.`].join(' '))
+              alert(
+                [
+                  `This is student generated content created during a`,
+                  `workshop in school, the workshops created have been brought`,
+                  `together to make an explorable collection.`,
+                ].join(' '),
+              )
             }}
           >
             i
@@ -73,38 +78,44 @@ export default function App({ users, user, errorCode }) {
               justifyContent: 'center',
             }}
           >
-            <Box
-              sx={{
-                '&:hover':{bg: 'blue'},
-                height: '40px',
-                width: '50px',
-                borderTopLeftRadius: 999,
-                borderBottomLeftRadius: 999,
-                paddingBottom: '6px',
-                alignItems: 'center',
-                display: 'flex',
-                justifyContent: 'flex-end',
-                paddingRight: '4px'
-              }}
-            >
-              ←
-            </Box>
-            <Box
-              sx={{
-                '&:hover':{bg: 'blue'},
-                height: '40px',
-                width: '50px',
-                borderTopRightRadius: 999,
-                borderBottomRightRadius: 999,
-                paddingBottom: '6px',
-                alignItems: 'center',
-                display: 'flex',
-                justifyContent: 'flex-start',
-                paddingLeft: '4px'
-              }}
-            >
-              →
-            </Box>
+            <Link href={`/api/back/${user.username}`}>
+              <Box
+                sx={{
+                  '&:hover': { bg: 'blue' },
+                  height: '40px',
+                  width: '50px',
+                  borderTopLeftRadius: 999,
+                  borderBottomLeftRadius: 999,
+                  paddingBottom: '6px',
+                  alignItems: 'center',
+                  display: 'flex',
+                  color: 'white',
+                  justifyContent: 'flex-end',
+                  paddingRight: '4px',
+                }}
+              >
+                ←
+              </Box>
+            </Link>
+            <Link href={`/api/next/${user.username}`}>
+              <Box
+                sx={{
+                  '&:hover': { bg: 'blue' },
+                  height: '40px',
+                  width: '50px',
+                  borderTopRightRadius: 999,
+                  borderBottomRightRadius: 999,
+                  paddingBottom: '6px',
+                  alignItems: 'center',
+                  display: 'flex',
+                  color: 'white',
+                  justifyContent: 'flex-start',
+                  paddingLeft: '4px',
+                }}
+              >
+                →
+              </Box>
+            </Link>
           </Box>
         </ThemeProvider>
       </>
@@ -134,7 +145,10 @@ export default function App({ users, user, errorCode }) {
             mt={3}
           >
             {users.map(user => (
-              <NextLink href={`https://${user.username}.nlcs.sampoder.com`}>
+              <NextLink
+                href={`https://${user.username}.nlcs.sampoder.com`}
+                key={user.username}
+              >
                 <Flex
                   sx={{
                     bg: 'brown',
