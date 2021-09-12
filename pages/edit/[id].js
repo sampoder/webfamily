@@ -8,7 +8,7 @@ import Error from 'next/error'
 import { getUserFromId } from './../api/[slug]'
 
 export default function EditPage({errorCode, user, userID}) {
-  const [code, setCode] = useState( errorCode ? '' : user['HTML Contents'])
+  const [code, setCode] = useState( errorCode ? '' : (user['HTML Contents'] ? user['HTML Contents'] : ''))
   const [savedStatus, setSavedStatus] = useState(true)
   if (errorCode) {
     return <Error statusCode={errorCode} />
