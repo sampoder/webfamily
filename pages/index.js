@@ -184,6 +184,8 @@ export default function App({ users, user, errorCode }) {
                     sx={{
                       borderRadius: 8,
                       height: '24px',
+                      width: '24px',
+                      objectFit: 'cover',
                       mr: 2,
                       border: '1.5px solid white',
                     }}
