@@ -7,7 +7,7 @@ const usersTable = new AirtablePlus({
 });
 
 export async function getUsers(){
-    return (await usersTable.read({}, {camelCase: true})).map(x => x.fields)
+    return (await usersTable.read({}, {filterByFormula: 'NOT({HTML Contents}=BLANK())', camelCase: true})).map(x => x.fields)
 }
 
 export default async function handler(req,res){
