@@ -12,12 +12,12 @@ import { getUsers } from './api/list'
 import { getUser } from './api/[slug]'
 import theme from '../lib/theme'
 import NextLink from 'next/link'
-import Error from 'next/error'
+import 404 from './404'
 import Meta from '../components/meta'
 
 export default function App({ users, user, errorCode }) {
   if (errorCode) {
-    return <Error statusCode={errorCode} />
+    return <404 />
   }
   if (user) {
     let strippedTheme = theme
