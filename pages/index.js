@@ -12,12 +12,12 @@ import { getUsers } from './api/list'
 import { getUser } from './api/[slug]'
 import theme from '../lib/theme'
 import NextLink from 'next/link'
-import 404 from './404'
+import FourOhFour from './404'
 import Meta from '../components/meta'
 
 export default function App({ users, user, errorCode }) {
   if (errorCode) {
-    return <404 />
+    return <FourOhFour />
   }
   if (user) {
     let strippedTheme = theme
