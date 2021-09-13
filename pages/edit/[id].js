@@ -8,7 +8,37 @@ import Error from 'next/error'
 import { getUserFromId } from './../api/[slug]'
 
 export default function EditPage({errorCode, user, userID}) {
-  const [code, setCode] = useState( errorCode ? '' : (user['HTML Contents'] ? user['HTML Contents'] : ''))
+  const [code, setCode] = useState( errorCode ? '' : (user['HTML Contents'] ? user['HTML Contents'] :     
+                                                     `
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>My Page on the NLCS Singapore Webfamily</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+    <link 
+href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <img src="https://i.imgur.com/njP1JWx.jpg" height="200" style="margin-top: 40px" />
+    <h1>My Personal Webpage</h1>
+    <p>Hi! Welcome to my personal website :D</p>
+    <script>
+      console.log('Look! I can run JS')
+    </script>
+    <style>
+      body {
+        text-align: center;
+        font-family: 'EB Garamond';
+      }
+    </style>
+  </body>
+</html>
+                                                     `))
   const [savedStatus, setSavedStatus] = useState(true)
   if (errorCode) {
     return <Error statusCode={errorCode} />
