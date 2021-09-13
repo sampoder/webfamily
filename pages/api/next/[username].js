@@ -23,6 +23,7 @@ export default async function handler(req, res) {
   let nextUsers = (await usersTable
     .read(
       {
+        filterByFormula: 'NOT({HTML Contents}=BLANK())',
         sort: [{ field: 'Number', direction: 'asc' }],
       },
       { camelCase: true },
