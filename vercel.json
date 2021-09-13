@@ -1,4 +1,10 @@
 {
   "public": true,
-  "github": { "silent": true }
+  "github": { "silent": true },
+  "redirects": [
+        {
+            "source": "/new",
+            "destination": "https://airtable.com/shroe7s996E0xZpv3"
+        }
+    ]
 }
