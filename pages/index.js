@@ -209,7 +209,7 @@ export default function App({ users, user, errorCode }) {
 export async function getServerSideProps(ctx) {
   let wildcard = ctx.req.headers.host.split('.')[0]
   wildcard =
-    wildcard != 'nlcs'
+    (wildcard != 'nlcs' || wildcard != 'webfamily')
       ? wildcard != 'localhost'
         ? wildcard
         : 'sampoder'
