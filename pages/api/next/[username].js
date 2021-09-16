@@ -37,6 +37,6 @@ export default async function handler(req, res) {
   if (nextUsersFiltered.length >= 1) {
     res.redirect(`https://${nextUsersFiltered[0].username}.nlcs.sampoder.com`)
   } else {
-    res.redirect(`https://${nextUsers[0].username}.nlcs.sampoder.com`)
+    res.redirect(`https://${nextUsers[0].username}.webfamily.sampoder.com`)
   }
 }
