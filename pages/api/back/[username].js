@@ -34,8 +34,8 @@ export default async function handler(req, res) {
   )
   console.log(nextUsersFiltered)
   if (nextUsersFiltered.length >= 1) {
-    res.redirect(`https://${nextUsersFiltered[nextUsersFiltered.length - 1].username}.nlcs.sampoder.com`)
+    res.redirect(`https://${nextUsersFiltered[nextUsersFiltered.length - 1].username}.webfamily.sampoder.com`)
   } else {
-    res.redirect(`https://${nextUsers[nextUsers.length - 1].username}.nlcs.sampoder.com`)
+    res.redirect(`https://${nextUsers[nextUsers.length - 1].username}.webfamily.sampoder.com`)
   }
 }
