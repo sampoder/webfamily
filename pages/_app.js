@@ -5,8 +5,8 @@ import Head from 'next/head'
 const App = ({ Component, pageProps }) => {
   return (
     <>
-      
       <Head>
+        <link rel="icon" type="image/png" href="https://cloud-ezksrr8rf-hack-club-bot.vercel.app/0boat_large__black_.jpg"/>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link
