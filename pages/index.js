@@ -161,7 +161,7 @@ export default function App({ users, user, errorCode }) {
           >
             {users.map(user => (
               <NextLink
-                href={`https://${user.username}.webfamily.sampoder.com`}
+                href={`https://${user.username}.thenlcssg.family`}
                 key={user.username}
               >
                 <Flex
@@ -209,7 +209,7 @@ export default function App({ users, user, errorCode }) {
 export async function getServerSideProps(ctx) {
   let wildcard = ctx.req.headers.host.split('.')[0]
   wildcard =
-    (wildcard != 'nlcs' && wildcard != 'webfamily')
+    (wildcard != 'thenlcssg' && wildcard != 'webfamily')
       ? wildcard != 'localhost'
         ? wildcard
         : 'sampoder'
