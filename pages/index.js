@@ -161,7 +161,7 @@ export default function App({ users, user, errorCode }) {
           >
             {users.map(user => (
               <NextLink
-                href={`https://${user.username}.thenlcssg.family`}
+                href={`https://${user.username}.webfamily.sampoder.com`}
                 key={user.username}
               >
                 <Flex
