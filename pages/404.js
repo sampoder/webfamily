@@ -27,7 +27,7 @@ export default function App({ users, user, errorCode }) {
             404: This Page Wasn't Found
           </Heading>
           <Heading sx={{ fontWeight: 400, mt: 3 }}>
-            <Link href="https://thenlcssg.family/">
+            <Link href="https://webfamily.sampoder.com/">
               Explore all the pages here.
             </Link>
           </Heading>
