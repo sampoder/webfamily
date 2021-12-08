@@ -149,10 +149,10 @@ export default function App({ users, user, errorCode }) {
             style={{ height: '100px', marginTop: '32px', marginBottom: '-8px' }}
           />
           <Heading as="h1" sx={{ fontSize: 5, mb: 2 }}>
-            The NLCS Singapore Webfamily
+            The NLCS (Singapore) Webfamily
           </Heading>
           <Heading sx={{ fontWeight: 400 }}>
-            A collection of websites made by the students of NLCS Singapore.
+            A collection of websites made by the students of NLCS (Singapore).
           </Heading>
           <Grid
             columns={2}
