@@ -148,7 +148,7 @@ export default function App({ users, user, errorCode }) {
             The Webfamily
           </Heading>
           <Heading sx={{ fontWeight: 400 }}>
-            A collection of websites made by the students of NLCS (Singapore).
+            A collection of websites made during Maker Week.
           </Heading>
           <Grid
             columns={2}
