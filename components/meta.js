@@ -5,9 +5,9 @@ const makeTitle = (title, name) =>
   title === name ? title : `${title} – ${name}`
 
 const Meta = ({
-  title = 'The NLCS Singapore Webfamily', // page title
-  name = 'The NLCS Singapore Webfamily', // site name
-  description = 'A collection of websites made by the students of NLCS Singapore.', // page description
+  title = 'The Webfamily', // page title
+  name = 'The Webfamily', // site name
+  description = 'A collection of websites made by students.', // page description
   image = '', // social card image URL
   url = '',
   children,
