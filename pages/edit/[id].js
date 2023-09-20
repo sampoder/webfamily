@@ -15,7 +15,7 @@ export default function EditPage({errorCode, user, userID}) {
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>My Page on the NLCS Singapore Webfamily</title>
+    <title>My Page on the Webfamily</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
     <link 
