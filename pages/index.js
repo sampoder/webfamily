@@ -144,12 +144,8 @@ export default function App({ users, user, errorCode }) {
           variant="copy"
           sx={{ textAlign: 'center', color: 'brown' }}
         >
-          <img
-            src="https://cloud-ezksrr8rf-hack-club-bot.vercel.app/0boat_large__black_.jpg"
-            style={{ height: '100px', marginTop: '32px', marginBottom: '-8px' }}
-          />
           <Heading as="h1" sx={{ fontSize: 5, mb: 2 }}>
-            The NLCS (Singapore) Webfamily
+            The Webfamily
           </Heading>
           <Heading sx={{ fontWeight: 400 }}>
             A collection of websites made by the students of NLCS (Singapore).
